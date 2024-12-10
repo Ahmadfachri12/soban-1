@@ -13,6 +13,8 @@ class LayananJasa extends Model
     protected $fillable = [
         'penyedia_jasa_id',
         'namaJasa',
+        'deskripsi',
+        'totalHarga',
         'kategori_id',
         'gambar',
     ];
