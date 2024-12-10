@@ -1,19 +1,27 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\LayananJasaController;
+use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [BerandaController::class, 'index']);
+Route::get('/layanan', [LayananJasaController::class, 'index']);
 
-Route::get('/dashboard', [AdminController::class, 'index'], function () {
+
+Route::get('/dashboard', function () {
     return view('admin.index');
-} );
+});
 
-Route::get('/', function () {
-    return view('user.index'); // Nama file blade
+// Route::get('/dashboard', function () {
+//     return view('admin.index');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::get('/layanan', function () {
-    return view('user.layanan');
-});
+
+require __DIR__.'/auth.php';
