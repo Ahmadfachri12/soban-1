@@ -14,7 +14,7 @@ class LayananJasa extends Model
         'penyedia_jasa_id',
         'namaJasa',
         'deskripsi',
-        'totalHarga',
+        'harga',
         'kategori_id',
         'gambar',
     ];

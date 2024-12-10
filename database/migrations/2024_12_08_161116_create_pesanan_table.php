@@ -17,8 +17,9 @@ return new class extends Migration
             $table->foreignId('layanan_jasa_id')->constrained('layanan_jasa')->onDelete('cascade');
             $table->date('waktuPemesanan');
             $table->enum('statusPembayaran', ['Belum dibayar', 'Sudah dibayar'])->default('Belum dibayar');
-            $table->float('totalHarga');
+            $table->double('totalHarga');
             $table->enum('statusPesanan', ['Belum diproses', 'Sedang diproses', 'Selesai'])->default('Belum diproses');
+            $table->text('ulasan')->nullable();
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('penyedia_jasa_id')->constrained('penyedia_jasa')->onDelete('cascade');
             $table->string('namaJasa');
             $table->text('deskripsi');
-            $table->float('totalHarga');
+            $table->double('harga');
             $table->foreignId('kategori_id')->constrained('kategori')->onDelete('cascade');
             $table->string('gambar')->nullable();
             $table->timestamps();
