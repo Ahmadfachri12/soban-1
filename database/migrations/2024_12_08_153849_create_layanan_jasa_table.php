@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('penyedia_jasa_id')->constrained('penyedia_jasa')->onDelete('cascade');
             $table->string('namaJasa');
+            $table->string('deskripsi');
+            $table->float('harga');
             $table->foreignId('kategori_id')->constrained('kategori')->onDelete('cascade');
             $table->string('gambar')->nullable();
             $table->timestamps();
