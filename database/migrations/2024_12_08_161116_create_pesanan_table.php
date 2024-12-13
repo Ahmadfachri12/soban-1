@@ -15,12 +15,18 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('layanan_jasa_id')->constrained('layanan_jasa')->onDelete('cascade');
-            $table->date('waktuPemesanan');
-            $table->enum('statusPembayaran', ['Belum dibayar', 'Sudah dibayar'])->default('Belum dibayar');
-            $table->double('totalHarga');
-            $table->enum('statusPesanan', ['Belum diproses', 'Sedang diproses', 'Selesai'])->default('Belum diproses');
-            $table->text('ulasan')->nullable();
-            $table->timestamps();
+            $table->foreignId('penyedia_jasa_id')->nullable()->constrained('users')->onDelete('set null'); // Penyedia Jasa (nullable)
+            $table->string('nama_lengkap'); // Nama lengkap pengguna
+            $table->string('alamat'); // Alamat pengguna
+            $table->string('no_telepon'); // No telepon pengguna
+            $table->date('waktu_pemesanan'); // Waktu pemesanan (tanggal)
+            $table->time('jam_pemesanan'); // Waktu pemesanan (jam)
+            $table->text('detail_pekerjaan'); // Detail pekerjaan
+            $table->double('harga'); // Harga layanan
+            $table->enum('status_pembayaran', ['Belum dibayar', 'Sudah dibayar'])->default('Belum dibayar');
+            $table->enum('status_pesanan', ['Belum diproses', 'Sedang diproses', 'Selesai'])->default('Belum diproses');
+            $table->text('ulasan')->nullable(); // Ulasan pesanan
+            $table->timestamps(); // Kolom created_at dan updated_at
         });
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Pesanan extends Model
@@ -13,10 +14,16 @@ class Pesanan extends Model
     protected $fillable = [
         'user_id',
         'layanan_jasa_id',
-        'waktuPemesanan',
-        'statusPembayaran',
-        'totalHarga',
-        'statusPesanan',
+        'penyedia_jasa_id',
+        'nama_lengkap',
+        'alamat',
+        'no_telepon',
+        'waktu_pemesanan',
+        'jam_pemesanan',
+        'detail_pekerjaan',
+        'harga',
+        'status_pembayaran',
+        'status_pesanan',
         'ulasan'
     ];
 
@@ -28,5 +35,10 @@ class Pesanan extends Model
     public function layananJasa()
     {
         return $this->belongsTo(LayananJasa::class);
+    }
+
+    public function penyediaJasa()
+    {
+        return $this->belongsTo(User::class, 'penyedia_jasa_id');
     }
 }

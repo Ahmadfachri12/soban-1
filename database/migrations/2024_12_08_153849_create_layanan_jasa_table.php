@@ -12,14 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('layanan_jasa', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('penyedia_jasa_id')->constrained('penyedia_jasa')->onDelete('cascade');
+            $table->id(); // Primary key
+            $table->foreignId('penyedia_jasa_id')
+                ->constrained('penyedia_jasa') // Referensi ke tabel penyedia_jasa
+                ->cascadeOnDelete(); // Hapus layanan jika penyedia dihapus
             $table->string('namaJasa');
             $table->text('deskripsi');
-            $table->double('harga');
-            $table->foreignId('kategori_id')->constrained('kategori')->onDelete('cascade');
-            $table->string('gambar')->nullable();
-            $table->timestamps();
+            $table->double('harga', 15, 2); // Pastikan format harga sesuai (opsional)
+            $table->foreignId('kategori_id')
+                ->constrained('kategori') // Referensi ke tabel kategori
+                ->cascadeOnDelete(); // Hapus layanan jika kategori dihapus
+            $table->string('gambar')->nullable(); // Gambar opsional
+            $table->timestamps(); // created_at dan updated_at
         });
     }
 

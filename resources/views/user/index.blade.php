@@ -5,68 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Soban</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="{{ asset('asset/css/styles.css') }}">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-  <header class="bg-[#27547D] text-white shadow-lg relative sticky top-0 z-50">
-    <div class="container mx-auto flex items-center justify-between py-4 px-6">
-      <!-- Logo -->
-      <div class="flex items-center space-x-2">
-        <img src="{{ asset('asset/img/logo soban.png') }}" alt="Logo Soban" class="w-10 h-10 rounded-full">
-        <span class="text-xl font-bold">SOBAN</span>
-      </div>
+{{-- Header --}}
+@include('layouts.header')
+{{-- End Header --}}
 
-      <!-- Navigation -->
-      <nav class="flex space-x-6">
-        <!-- Beranda Menu with Icon -->
-        <a href="#beranda" class="flex items-center space-x-1 hover:text-blue-300">
-            <i class="fas fa-home"></i><span>Beranda</span>
-        </a>
-        
-        <!-- Layanan Menu with Icon -->
-        <a href="/layanan" class="flex items-center space-x-1 hover:text-blue-300">
-            <i class="fas fa-cogs"></i><span>Layanan</span>
-        </a>
-        
-        <!-- Pesanan Menu with Task Icon -->
-        <a href="#pesanan" class="flex items-center space-x-1 hover:text-blue-300">
-            <i class="fa-solid fa-clipboard-list"></i><span>Pesanan</span>
-        </a>
-        
-        <!-- Tentang Kami Menu with Icon -->
-        <a href="#tentang" class="flex items-center space-x-1 hover:text-blue-300">
-            <i class="fa-solid fa-users"></i><span>Tentang Kami</span>
-        </a>
-        
-        <!-- FAQ Menu with Icon -->
-        <a href="#faq" class="flex items-center space-x-1 hover:text-blue-300">
-            <i class="fas fa-question-circle"></i><span>FAQ</span>
-        </a>
-      </nav>
-
-      <!-- Buttons -->
-      <div class="flex space-x-4">
-        <button class="bg-white text-[#3F8CFF] px-4 py-2 rounded hover:bg-blue-100">Login</button>
-        <button class="bg-[#3F8CFF] text-white px-4 py-2 rounded hover:bg-blue-400">Registrasi Akun</button>
-      </div>
+<!-- Hero Section -->
+<section class="bg-[#27547D] text-white py-20">
+  <div class="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between px-6 space-y-8 md:space-y-0">
+    <!-- Text Section -->
+    <div class="max-w-lg text-center md:text-left mx-16">
+      <h1 class="text-4xl font-semibold mb-4">
+        Sobat, Sobat Setiamu untuk Membantu!
+      </h1>
+      <p class="text-lg mb-6">
+        Cari layanan terbaik di sekitar Anda dengan Sobat.
+      </p>
+      <!-- Button -->
+      <a href="#pesan"
+        class="bg-[#3F8CFF] text-white border-2 border-white py-2 px-4 md:py-3 md:px-6 rounded-lg text-base md:text-lg hover:bg-[#3578d4] transition inline-block">
+        <i class="fa-solid fa-paper-plane"></i> Pesan Sekarang
+      </a>
     </div>
-  </header>
 
-  <!-- Hero Section -->
-  <section class="bg-[#27547D] text-white py-20">
-    <div class="container mx-auto flex items-center justify-between px-6">
-      <div class="max-w-lg mx-12">
-        <h1 class="text-4xl font-semibold mb-4">Sobat, Sobat Setiamu untuk Membantu!</h1>
-        <p class="text-lg mb-6">Cari layanan terbaik di sekitar Anda dengan Sobat.</p>
-        <a href="#pesan" class="bg-[#3F8CFF] text-white border-2 border-white py-3 px-6 rounded-lg text-lg hover:bg-[#3578d4] transition">
-            <i class="fa-solid fa-paper-plane"></i> Pesan Sekarang
-        </a>
-      </div>
-      <div>
-        <img src="{{asset ('asset/img/Angkat Barang.png') }}" alt="Image" class="w-full max-w-lg mx-20 -mb-20"/>
-      </div>
+    <!-- Image Section -->
+    <div class="flex justify-center md:justify-end order-1 md:order-2">
+      <img src="{{ asset('asset/img/Angkat Barang.png') }}" alt="Image"
+        class="w-3/4 md:w-full max-w-lg mx-auto md:mx-0" />
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Statistik Bagian -->
   <section class="bg-white py-12">
@@ -104,28 +75,24 @@
   </section>
 
   <!-- tentang kami -->
-  <section class="bg-[#F1F8FF] py-16 mx-8 rounded-3xl" style="background-image: url('asset/img/gambar\ 2.jpg'); background-size: cover; background-position: center;">
+  <section class="bg-[#F1F8FF] py-16 mx-8 rounded-3xl" style="background-image: url('asset/img/background tentang kami.png'); background-size: auto; background-position: center;">
     <div class="container mx-auto px-6 text-center">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <!-- Kolom Kiri: Teks -->
-            <div class="justify-center text-center lg:text-left">
-                <h2 class="text-4xl font-bold text-white mb-4">Apa Itu Soban?</h2>
-                <p class="text-lg text-white mx-auto lg:mx-0 max-w-3xl mb-8">
-                    Soban (Sobat Bantu) adalah platform yang menghubungkan Anda dengan tenaga bantuan profesional untuk menyelesaikan berbagai tugas harian,
-                    mulai dari berbelanja, mengirim barang, hingga aneka keperluan lainnya.
-                </p>
-                <a href="#coba-sekarang" class="bg-[#3F8CFF] text-white border-2 border-white py-3 px-6 rounded-lg text-lg hover:bg-[#3578d4] transition">
-                    <i class="fa-solid fa-paper-plane"></i> Coba Sekarang
-                </a>
-            </div>
-
-            <!-- Kolom Kanan: Gambar -->
-            <div class="flex justify-center items-center">
-                <img src="asset/img/logo soban.png" alt="Image" class="w-full max-w-md rounded-full shadow-lg ml-20">
-            </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Kolom Kiri: Teks -->
+        <div class="justify-center text-center lg:text-left">
+          <h2 class="text-4xl font-bold text-white mb-4">Apa Itu Soban?</h2>
+          <p class="text-lg text-white mx-auto lg:mx-0 max-w-3xl mb-8">
+            Soban (Sobat Bantu) adalah platform yang menghubungkan Anda dengan tenaga bantuan profesional untuk menyelesaikan berbagai tugas harian,
+            mulai dari berbelanja, mengirim barang, hingga aneka keperluan lainnya.
+          </p>
+          <a href="#coba-sekarang" class="bg-[#27547D] text-white border-2 border-white py-2 px-4 sm:py-3 sm:px-6 lg:py-3 lg:px-6 rounded-lg text-sm sm:text-base lg:text-lg hover:bg-[#3578d4] transition">
+            <i class="fa-solid fa-paper-plane"></i> Coba Sekarang
+          </a>
         </div>
+      </div>
     </div>
-</section>
+  </section>
+  
 
 
   
@@ -278,75 +245,19 @@
   </section>
 
   <section class="bg-[#27547D] text-white py-16">
-    <div class="container mx-auto flex flex-col items-center text-center">
-    <p class="text-2xl">Mulai Sekarang</p> <br>
-      <h2 class="text-4xl font-bold mb-6">Ayo Pesan Layanan Sekarang!</h2>
-      <p class="text-lg mb- max-w-3xl">Kamu bisa mengikuti prosedur yang telah dijelaskan sesuai langkah yang ada di atas.</p> <br>
-      <a href="#pesan" class="bg-[#3F8CFF] text-white border-2 border-white py-3 px-6 rounded-lg text-lg hover:bg-[#3578d4] transition">
-        <i class="fa-solid fa-paper-plane"></i> Cari layanan
-      </a>
+    <div class="container mx-auto flex flex-col items-center text-center px-6">
+        <p class="text-xl md:text-2xl lg:text-3xl">Mulai Sekarang</p> <br>
+        <h2 class="text-3xl font-bold mb-6 md:text-4xl lg:text-5xl">Ayo Pesan Layanan Sekarang!</h2>
+        <p class="text-base md:text-lg mb-6 max-w-3xl mx-auto">Kamu bisa mengikuti prosedur yang telah dijelaskan sesuai langkah yang ada di atas.</p> <br>
+        <a href="#pesan" class="bg-[#3F8CFF] text-white border-2 border-white py-2 px-4 rounded-lg text-sm md:text-base lg:text-lg hover:bg-[#3578d4] transition">
+            <i class="fa-solid fa-paper-plane"></i> Cari layanan
+        </a>
     </div>
-  </section>
+</section>
   
   <!-- Footer -->
-  <footer class="bg-[#DCE1DE]">
-    <!-- Footer Content -->
-    <div class="container mx-auto px-6 py-12">
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mx-8">
-        <!-- Kolom 1: Tentang Kami -->
-        <div>
-          <h4 class="text-xl font-bold mb-4 text-[#27547D]">Tentang Kami</h4>
-          <p class="text-sm text-gray-600">Kami adalah perusahaan yang berkomitmen untuk memberikan layanan terbaik kepada pelanggan kami. Menyediakan solusi yang cepat dan efisien.</p>
-        </div>
+  @include('layouts.footer')
   
-        <!-- Kolom 2: Navigasi -->
-        <div>
-          <h4 class="text-xl font-bold mb-4 text-[#27547D]">Navigasi Cepat</h4>
-          <ul class="text-sm text-gray-600">
-            <li><a href="#" class="hover:text-[#275470]"><i class="fas fa-angle-right text-[#27547D]"></i> Tentang kami</a></li>
-            <li><a href="#" class="hover:text-[#275470]"><i class="fas fa-angle-right text-[#27547D]"></i> Layanan</a></li>
-            <li><a href="#" class="hover:text-[#275470]"><i class="fas fa-angle-right text-[#27547D]"></i> Ulasan</a></li>
-            <li><a href="#" class="hover:text-[#275470]"><i class="fas fa-angle-right text-[#27547D]"></i> FAQ</a></li>
-          </ul>
-        </div>
-  
-        <!-- Kolom 3: Ikon Sosial Media -->
-        <div>
-          <h4 class="text-xl font-bold mb-4 text-[#27547D]">Sosial Media Kami</h4>
-          <div class="flex space-x-4">
-            <a href="https://www.instagram.com" target="_blank" class="text-4xl text-[#E4405F]">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.facebook.com" target="_blank" class="text-4xl text-[#1877F2]">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://www.linkedin.com" target="_blank" class="text-4xl text-[#0A66C2]">
-                <i class="fab fa-linkedin-in"></i>
-            </a>
-          </div>
-        </div>
-  
-        <!-- Kolom 4: Kontak -->
-        <div>
-          <h4 class="text-xl font-bold mb-4 text-[#27547D]">Kantor Pusat Kami</h4>
-            <div class="flex items-center space-x-2 mb-2">
-            <i class="fas fa-map-marker-alt text-[#27547D]"></i>
-            <p class="text-sm text-gray-600">Jl. Setu Indah No. 116, Kec. Cimanggis, Kota Depok, Provinsi Jawa Barat, Kode Pos 16451</p>
-            </div>
-            <div class="flex items-center space-x-2">
-              <i class="fa-solid fa-phone text-[#27547D]"></i>
-            <p class="text-sm text-gray-600">(+62) 81389739616</p>
-            </div>
-      </div>
-    </div>
-  
-</footer>
-<!-- Footer Bottom (Copyright) -->
-<div class="bg-[#27547D] text-white py-2">
-  <div class="container mx-auto text-center text-sm">
-    <p>&copy; 2024 Eaglecode.students. All Rights Reserved.</p>
-  </div>
-</div>
-  
+<script src="{{ asset('asset/js/script.js') }}"></script>
 </body>
 </html>

@@ -27,7 +27,8 @@ class LayananJasaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $layanan = LayananJasa::with(['kategori', 'penyediaJasa'])->findOrFail($id);
+            return view('user.detail_layanan', compact('layanan'));
     }
 
     /**
