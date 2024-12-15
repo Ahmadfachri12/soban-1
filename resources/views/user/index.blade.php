@@ -75,6 +75,11 @@
   </section>
 
   <!-- tentang kami -->
+  <section class="bg-[#F1F8FF] py-8">
+    <div class="container mx-auto px-6 text-center">
+      <h1 id="tentang" class="text-5xl font-extrabold text-[#27547D] mb-4">Tentang Kami</h1>
+    </div>
+  </section>
   <section class="bg-[#F1F8FF] py-16 mx-8 rounded-3xl" style="background-image: url('asset/img/background tentang kami.png'); background-size: auto; background-position: center;">
     <div class="container mx-auto px-6 text-center">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -172,6 +177,94 @@
       </div>
     </div>
   </section>
+
+
+<!-- FAQ Section -->
+<section class="bg-[#f9f9f9] py-16">
+  <div class="container mx-auto text-center">
+    <h2 id="faq"  class="text-5xl font-bold mb-8 text-[#27547D]">FAQ</h2>
+    <p class="text-lg font-semibold text-gray-700 mb-8">Pertanyaan yang Sering Diajukan</p>
+
+    <div class="space-y-4 max-w-3xl mx-auto">
+      <!-- FAQ Item 1 -->
+      <div class="bg-white p-4 rounded-lg shadow-lg">
+        <button class="flex justify-between w-full text-left" onclick="toggleFAQ('faq1')">
+          <span class="text-lg font-semibold">Apakah saya perlu membuat akun untuk memesan layanan?</span>
+          <i id="faq1-icon" class="fas fa-plus text-xl text-[#27547D]"></i>
+        </button>
+        <div id="faq1" class="hidden mt-4 text-left text-gray-600 transition-all duration-300 ease-in-out max-h-0 overflow-hidden">
+          <p>Ya, Anda perlu membuat akun untuk memesan layanan agar kami dapat melacak pesanan Anda dan memberikan pengalaman yang lebih baik.</p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 2 -->
+      <div class="bg-white p-4 rounded-lg shadow-lg">
+        <button class="flex justify-between w-full text-left" onclick="toggleFAQ('faq2')">
+          <span class="text-lg font-semibold">Apa saja layanan yang tersedia di Soban?</span>
+          <i id="faq2-icon" class="fas fa-plus text-xl text-[#27547D]"></i>
+        </button>
+        <div id="faq2" class="hidden mt-4 text-left text-gray-600 transition-all duration-300 ease-in-out max-h-0 overflow-hidden">
+          <p>Soban menawarkan berbagai layanan mulai dari antar jemput barang, pindahan, bersih-bersih, dan lainnya. Anda bisa memilih layanan sesuai kebutuhan.</p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 3 -->
+      <div class="bg-white p-4 rounded-lg shadow-lg">
+        <button class="flex justify-between w-full text-left" onclick="toggleFAQ('faq3')">
+          <span class="text-lg font-semibold">Berapa biaya layanan di Soban?</span>
+          <i id="faq3-icon" class="fas fa-plus text-xl text-[#27547D]"></i>
+        </button>
+        <div id="faq3" class="hidden mt-4 text-left text-gray-600 transition-all duration-300 ease-in-out max-h-0 overflow-hidden">
+          <p>Biaya layanan tergantung pada jenis layanan yang dipilih. Kami memberikan estimasi biaya setelah Anda memilih layanan yang diinginkan.</p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 4 -->
+      <div class="bg-white p-4 rounded-lg shadow-lg">
+        <button class="flex justify-between w-full text-left" onclick="toggleFAQ('faq4')">
+          <span class="text-lg font-semibold">Apakah tenaga bantuan Soban terpercaya?</span>
+          <i id="faq4-icon" class="fas fa-plus text-xl text-[#27547D]"></i>
+        </button>
+        <div id="faq4" class="hidden mt-4 text-left text-gray-600 transition-all duration-300 ease-in-out max-h-0 overflow-hidden">
+          <p>Ya, semua tenaga bantuan di Soban telah melalui seleksi dan pelatihan untuk memastikan kualitas dan keamanan.</p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 5 -->
+      <div class="bg-white p-4 rounded-lg shadow-lg">
+        <button class="flex justify-between w-full text-left" onclick="toggleFAQ('faq5')">
+          <span class="text-lg font-semibold">Apakah layanan 24/7?</span>
+          <i id="faq5-icon" class="fas fa-plus text-xl text-[#27547D]"></i>
+        </button>
+        <div id="faq5" class="hidden mt-4 text-left text-gray-600 transition-all duration-300 ease-in-out max-h-0 overflow-hidden">
+          <p>Tergantung pada jenis layanan, beberapa layanan mungkin tersedia 24/7. Anda bisa memeriksa jam operasional masing-masing layanan di aplikasi atau website kami.</p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 6 -->
+      <div class="bg-white p-4 rounded-lg shadow-lg">
+        <button class="flex justify-between w-full text-left" onclick="toggleFAQ('faq6')">
+          <span class="text-lg font-semibold">Apa saja metode pembayaran yang diterima?</span>
+          <i id="faq6-icon" class="fas fa-plus text-xl text-[#27547D]"></i>
+        </button>
+        <div id="faq6" class="hidden mt-4 text-left text-gray-600 transition-all duration-300 ease-in-out max-h-0 overflow-hidden">
+          <p>Kami menerima berbagai metode pembayaran termasuk transfer bank, kartu kredit, dan pembayaran melalui aplikasi digital seperti OVO, GoPay, dan lainnya.</p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 7 -->
+      <div class="bg-white p-4 rounded-lg shadow-lg">
+        <button class="flex justify-between w-full text-left" onclick="toggleFAQ('faq7')">
+          <span class="text-lg font-semibold">Apakah saya bisa memesan lebih dari satu layanan sekaligus?</span>
+          <i id="faq7-icon" class="fas fa-plus text-xl text-[#27547D]"></i>
+        </button>
+        <div id="faq7" class="hidden mt-4 text-left text-gray-600 transition-all duration-300 ease-in-out max-h-0 overflow-hidden">
+          <p>Ya, Anda bisa memesan lebih dari satu layanan sekaligus. Pastikan untuk menyesuaikan jadwal dan kebutuhan Anda pada formulir pemesanan.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
   
   <!-- Ulasan Pelanggan -->
   <section class="bg-[#f9f9f9] py-16">
@@ -257,6 +350,28 @@
   
   <!-- Footer -->
   @include('layouts.footer')
+
+{{-- FAQ --}}
+<script>
+  function toggleFAQ(id) {
+    const faqContent = document.getElementById(id);
+    const icon = document.getElementById(id + '-icon');
+    
+    if (faqContent.classList.contains('hidden')) {
+      faqContent.classList.remove('hidden');
+      faqContent.style.maxHeight = faqContent.scrollHeight + "px"; // Set max-height to content height for smooth transition
+      icon.classList.remove('fa-plus');
+      icon.classList.add('fa-minus');
+    } else {
+      faqContent.style.maxHeight = "0"; // Reset max-height for smooth collapse
+      setTimeout(() => {
+        faqContent.classList.add('hidden');
+      }, 300); // Wait for the transition to complete before hiding
+      icon.classList.remove('fa-minus');
+      icon.classList.add('fa-plus');
+    }
+  }
+</script>
   
 <script src="{{ asset('asset/js/script.js') }}"></script>
 </body>

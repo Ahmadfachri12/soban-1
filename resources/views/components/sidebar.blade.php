@@ -11,9 +11,9 @@
 
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="bi bi-layout-text-window-reverse"></i><span>Data Tables</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
-      <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <ul id="tables-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
         <li>
           <a href="tables-general.html">
             <i class="bi bi-people fs-6"></i><span>Data Pengguna</span>
@@ -30,7 +30,7 @@
           </a>
         </li>
         <li>
-          <a href="tables-data.html">
+          <a href="/dashboard/layananjasa">
             <i class="bi bi-box fs-6"></i><span>Data Layanan Jasa</span>
           </a>
         </li>
@@ -40,7 +40,8 @@
           </a>
         </li>
       </ul>
-    </li><!-- End Tables Nav -->
+    </li>
+    <!-- End Tables Nav -->
 
     <li class="nav-heading">Pages</li>
 

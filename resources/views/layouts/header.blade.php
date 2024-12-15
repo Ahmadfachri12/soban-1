@@ -12,7 +12,7 @@
           <span class="hamburger-line w-6 h-1 bg-white transition-opacity duration-300 ease-in-out"></span>
           <span class="hamburger-line w-6 h-1 bg-white transition-transform duration-300 ease-in-out"></span>
       </button>
-      
+
         <!-- Navigation -->
         <nav id="nav-links" class="hidden md:flex space-x-6">
             <a href="/" class="flex items-center space-x-1 hover:text-blue-300">
@@ -24,10 +24,10 @@
             <a href="#pesanan" class="flex items-center space-x-1 hover:text-blue-300">
                 <i class="fa-solid fa-clipboard-list"></i><span>Pesanan</span>
             </a>
-            <a href="#tentang" class="flex items-center space-x-1 hover:text-blue-300">
+            <a href="/#tentang" class="flex items-center space-x-1 hover:text-blue-300">
                 <i class="fa-solid fa-users"></i><span>Tentang Kami</span>
             </a>
-            <a href="#faq" class="flex items-center space-x-1 hover:text-blue-300">
+            <a href="/#faq" class="flex items-center space-x-1 hover:text-blue-300">
                 <i class="fas fa-question-circle"></i><span>FAQ</span>
             </a>
         </nav>
@@ -56,18 +56,33 @@
             <a href="#pesanan" class="flex items-center space-x-1 text-white hover:text-blue-300">
                 <i class="fa-solid fa-clipboard-list"></i><span>Pesanan</span>
             </a>
-            <a href="#tentang" class="flex items-center space-x-1 text-white hover:text-blue-300">
+            <a href="/#tentang" class="flex items-center space-x-1 hover:text-blue-300">
                 <i class="fa-solid fa-users"></i><span>Tentang Kami</span>
             </a>
-            <a href="#faq" class="flex items-center space-x-1 text-white hover:text-blue-300">
+            </a>
+            <a href="/#faq" class="flex items-center space-x-1 text-white hover:text-blue-300">
                 <i class="fas fa-question-circle"></i><span>FAQ</span>
             </a>
         </nav>
-        
+
         <!-- Buttons for mobile -->
         <div class="space-y-4 mt-4">
             <a href="{{ route('login') }}" class="w-full bg-[#FFF] text-[#27547D] font-semibold px-4 py-2 rounded hover:bg-blue-100 text-center">Login</a>
             <a href="{{ route('register') }}" class="w-full bg-[#FFF] text-[#27547D] font-semibold px-4 py-2 rounded hover:bg-blue-400 text-center">Registrasi Akun</a>
         </div>
     </div>
+    <style>
+        html {
+          scroll-behavior: smooth;
+        }
+      </style>
+
 </header>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash;
+      if (hash && document.querySelector(hash)) {
+        document.querySelector(hash).scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  </script>

@@ -31,7 +31,7 @@
           </svg>
           <span class="text-sm">Filter</span>
         </button>
-      
+
         <!-- Dropdown Menu -->
         <div id="filterDropdown" class="hidden absolute mt-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg">
           <ul class="py-2 text-sm text-gray-700">
@@ -62,12 +62,12 @@
           </ul>
         </div>
       </div>
-      
+
       <script>
         // Toggle dropdown menu
         const filterButton = document.getElementById('filterButton');
         const filterDropdown = document.getElementById('filterDropdown');
-      
+
         filterButton.addEventListener('click', () => {
           filterDropdown.classList.toggle('hidden');
         });
@@ -82,54 +82,82 @@
   </section>
 
   <!-- Services -->
-<section>
-  <div class="container mx-auto max-w-6xl py-8">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <!-- Service Card -->
-      @foreach ($layanan as $layanan)
-      <div class="bg-white rounded-xl shadow-2xl p-4">
-        <img src="{{ asset('asset/img/' . ($layanan->gambar ? $layanan->gambar : 'default-image.jpg')) }}" alt="Service" class="w-24 mx-auto mb-4">
-        <h3 class="text-center font-semibold text-lg mb-2">{{ $layanan->namaJasa }}</h3>
-        <div class="flex items-center justify-center space-x-2 mb-2">
-          <!-- Stars -->
-          <div class="flex">
-            <svg class="w-4 h-4 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 17.27L18.18 21 16.54 13.97 22 9.24 14.81 8.63 12 2 9.19 8.63 2 9.24 7.46 13.97 5.82 21 12 17.27z" />
-            </svg>
-            <svg class="w-4 h-4 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 17.27L18.18 21 16.54 13.97 22 9.24 14.81 8.63 12 2 9.19 8.63 2 9.24 7.46 13.97 5.82 21 12 17.27z" />
-            </svg>
-            <svg class="w-4 h-4 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 17.27L18.18 21 16.54 13.97 22 9.24 14.81 8.63 12 2 9.19 8.63 2 9.24 7.46 13.97 5.82 21 12 17.27z" />
-            </svg>
-            <svg class="w-4 h-4 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 17.27L18.18 21 16.54 13.97 22 9.24 14.81 8.63 12 2 9.19 8.63 2 9.24 7.46 13.97 5.82 21 12 17.27z" />
-            </svg>
-            <svg class="w-4 h-4 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 17.27L18.18 21 16.54 13.97 22 9.24 14.81 8.63 12 2 9.19 8.63 2 9.24 7.46 13.97 5.82 21 12 17.27z" />
-            </svg>
+  <section>
+    <div class="container mx-auto max-w-6xl py-8">
+      <div id="layanan-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Service Card -->
+        @foreach ($layanan as $index => $layanan)
+          <div class="bg-white rounded-xl shadow-2xl p-4 {{ $index >= 8 ? 'hidden' : '' }}" id="layanan-card-{{ $index }}">
+            <img
+              src="{{ asset('asset/img/' . ($layanan->gambar ? $layanan->gambar : 'default-image.jpg')) }}"
+              alt="Service"
+              class="w-24 h-24 object-cover mx-auto mb-4 rounded-full">
+            <h3 class="text-center font-semibold text-lg mb-2">{{ $layanan->namaJasa }}</h3>
+            <div class="flex items-center justify-center space-x-2 mb-2">
+              <!-- Display Harga -->
+              <span class="text-base text-black-300">Rp {{ number_format($layanan->harga, 0, ',', '.') }}</span>
+            </div>
+            <!-- Order Button -->
+            <div class="text-end">
+              <a href="{{ route('layanan.show', $layanan->id) }}">
+                <button class="bg-amber-500 text-white px-3 py-1 rounded-md hover:bg-blue-700">Lihat</button>
+              </a>
+              <a href="{{ route('layanan.pesan', $layanan->id) }}">
+                <button class="bg-blue-600 text-white px-3 py-1 rounded-md hover:bg-blue-700">Pesan</button>
+              </a>
+            </div>
           </div>
-          <!-- User Count -->
-          <span class="text-sm text-gray-500">5k Pengguna</span>
-        </div>
-        <!-- Order Button -->
-        <div class="text-end">
-          <a href="{{ route('layanan.show', $layanan->id) }}">
-            <button class="bg-amber-500 text-white px-3 py-1 rounded-md hover:bg-blue-700">Lihat</button>
-          </a>
-          <a href="{{ route('layanan.pesan', $layanan->id) }}">
-            <button class="bg-blue-600 text-white px-3 py-1 rounded-md hover:bg-blue-700">Pesan</button>
-          </a>
-        </div>
+        @endforeach
       </div>
-      @endforeach
-    </div>
-  </div>
-</section>
 
-  
+      <!-- Buttons for showing and hiding cards -->
+      <div class="flex justify-center mt-8 space-x-4">
+        <button id="load-more" class="bg-[#27547D] text-white text-lg px-6 py-3 rounded-lg hover:bg-blue-700 transition flex items-center space-x-2">
+          <span>Lihat Selengkapnya</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+        <button id="back-to-top" class="bg-[#27547D] text-white text-lg px-6 py-3 rounded-lg hover:bg-blue-700 transition flex items-center space-x-2 hidden">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Tutup</span>
+        </button>
+      </div>
+    </div>
+  </section>
+  <script>
+    document.getElementById('load-more').addEventListener('click', function() {
+      const hiddenCards = document.querySelectorAll('#layanan-container .hidden');
+
+      hiddenCards.forEach(function(card) {
+        card.classList.remove('hidden');
+      });
+
+      this.style.display = 'none';
+
+      document.getElementById('back-to-top').classList.remove('hidden');
+    });
+
+    document.getElementById('back-to-top').addEventListener('click', function() {
+      const revealedCards = document.querySelectorAll('#layanan-container .bg-white');
+
+      revealedCards.forEach(function(card, index) {
+        if (index >= 8) {
+          card.classList.add('hidden');
+        }
+      });
+
+      document.getElementById('load-more').style.display = 'inline-block';
+
+      this.classList.add('hidden');
+    });
+  </script>
+
+
+
+
+
   <!-- Footer -->
   @include('layouts.footer')
+
 
   <script src="{{ asset('asset/js/script.js') }}"></script>
 </body>
