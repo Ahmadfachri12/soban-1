@@ -5,8 +5,10 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\LayananJasaController;
 use App\Http\Controllers\Admin\LayananJasaController as AdminLayananJasaController;
+use App\Http\Controllers\Admin\KategoriController as AdminKategoriController;
 use App\Http\Controllers\PesananController;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/dashboard/layananjasa', [AdminLayananJasaController::class, 'index'])->name('admin.layananjasa.index'); // Menggunakan alias
 Route::get('/dashboard/layananjasa/create', [AdminLayananJasaController::class, 'create']); // Menggunakan alias
@@ -16,7 +18,7 @@ Route::get('/dashboard/layananjasa/{id}/edit', [AdminLayananJasaController::clas
 Route::put('/dashboard/layananjasa/{id}', [AdminLayananJasaController::class, 'update'])->name('admin.layananjasa.update');
 Route::delete('/dashboard/layananjasa/{id}', [AdminLayananJasaController::class, 'destroy'])->name('admin.layananjasa.destroy');
 
-
+Route::get('/dashboard/kategori', [AdminKategoriController::class, 'index'])->name('admin.kategori.index'); 
 
 
 Route::get('/', [BerandaController::class, 'index']);
