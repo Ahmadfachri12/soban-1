@@ -15,10 +15,20 @@ class KategoriController extends Controller
 
     // Menampilkan form untuk menambah layanan jasa
     public function create()
-    {
-        // Mengambil data penyedia jasa dan kategori untuk dropdown
-        $kategori = kategori::all();
-        
+    { 
         return view('admin.kategori.create', compact('kategori'));
     }
+
+    public function store(Request $request)
+    {
+        // validasi form input
+        $validated = $request->validate([
+            'nama' => 'required|string',
+            'deskripsi' => 'required|string'
+        ]);
+
+        kategori::create($validated);
+        return redirect('admin.kategori.index')->with('pesan', 'Kategori berhasil ditambahkan.');
+    }
+
 }
