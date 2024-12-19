@@ -25,7 +25,7 @@
           </a>
         </li>
         <li>
-          <a href="tables-data.html">
+          <a href="/dashboard/kategori">
             <i class="bi bi-tags fs-6"></i><span>Data Kategori</span>
           </a>
         </li>
