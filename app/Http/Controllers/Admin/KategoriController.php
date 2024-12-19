@@ -16,7 +16,7 @@ class KategoriController extends Controller
     // Menampilkan form untuk menambah layanan jasa
     public function create()
     { 
-        return view('admin.kategori.create', compact('kategori'));
+        return view('admin.kategori.create');
     }
 
     public function store(Request $request)
