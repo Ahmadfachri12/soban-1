@@ -19,7 +19,8 @@ Route::put('/dashboard/layananjasa/{id}', [AdminLayananJasaController::class, 'u
 Route::delete('/dashboard/layananjasa/{id}', [AdminLayananJasaController::class, 'destroy'])->name('admin.layananjasa.destroy');
 
 Route::get('/dashboard/kategori', [AdminKategoriController::class, 'index'])->name('admin.kategori.index'); 
-
+Route::get('/dashboard/kategori/create', [AdminKategoriController::class, 'create']);
+Route::post('/dashboard/kategori/store', [AdminKategoriController::class, 'store'])->name('admin.kategori.store');
 
 Route::get('/', [BerandaController::class, 'index']);
 Route::get('/layanan', [LayananJasaController::class, 'index']);

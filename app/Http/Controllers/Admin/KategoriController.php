@@ -12,4 +12,13 @@ class KategoriController extends Controller
         $kategoris = kategori::all();
         return view('admin.kategori.index', compact('kategoris'));   
     }
+
+    // Menampilkan form untuk menambah layanan jasa
+    public function create()
+    {
+        // Mengambil data penyedia jasa dan kategori untuk dropdown
+        $kategori = kategori::all();
+        
+        return view('admin.kategori.create', compact('kategori'));
+    }
 }
