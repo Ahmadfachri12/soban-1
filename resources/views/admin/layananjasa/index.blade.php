@@ -3,7 +3,7 @@
     <x-slot name="title"><h6>Data Layanan Jasa</h6></x-slot>
     <x-slot name="page_content">
         
-
+        
         <!-- Main content -->
         <div class="flex-1 p-6">
             <div style="background-color: #DBDFE6" class="py-4 rounded-lg border">

@@ -35,7 +35,7 @@
           </a>
         </li>
         <li>
-          <a href="tables-data.html">
+          <a href="/dashboard/pesanan">
             <i class="bi bi-receipt fs-6"></i><span>Data Pesanan</span>
           </a>
         </li>

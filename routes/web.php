@@ -19,6 +19,7 @@ Route::delete('/dashboard/layananjasa/{id}', [AdminLayananJasaController::class,
 
 
 
+
 Route::get('/', [BerandaController::class, 'index']);
 Route::get('/layanan', [LayananJasaController::class, 'index']);
 Route::get('/layanan/{id}', [LayananJasaController::class, 'show'])->name('layanan.show');

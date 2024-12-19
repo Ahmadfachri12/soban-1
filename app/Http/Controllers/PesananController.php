@@ -20,7 +20,8 @@ class PesananController extends Controller
     {
         // Mengambil data layanan berdasarkan ID
         $layanan = LayananJasa::find($id);
-
+        return view('user.detail_layanan', compact('layanan'));
+    
         // Jika layanan tidak ditemukan, tampilkan error 404
         if (!$layanan) {
             abort(404, 'Layanan tidak ditemukan');
