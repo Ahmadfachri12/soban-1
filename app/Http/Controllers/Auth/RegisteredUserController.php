@@ -17,34 +17,42 @@ class RegisteredUserController extends Controller
     /**
      * Display the registration view.
      */
-    public function create(): View
+    public function create()
     {
         return view('auth.register');
     }
 
-    /**
-     * Handle an incoming registration request.
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
+        // Validasi input yang diterima
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users,username',
+            'noTelepon' => 'required|string|max:20',
+            'email' => 'required|string|email|max:255|unique:users,email',
+            'birthdate' => 'nullable|date',
+            'gender' => 'required|string|in:Laki-Laki,Perempuan',
+            'alamat' => 'required|string|max:255',
+            'password' => 'required|string|confirmed|min:8',
+            'role' => 'required|in:admin,penyedia_jasa,pengguna', // Validasi sesuai pilihan
         ]);
-
+    
         $user = User::create([
             'name' => $request->name,
+            'username' => $request->username,
+            'noTelepon' => $request->noTelepon,
             'email' => $request->email,
+            'birthdate' => $request->birthdate,
+            'gender' => $request->gender,
+            'alamat' => $request->alamat,
             'password' => Hash::make($request->password),
+            'role' => $request->role,
         ]);
-
+    
         event(new Registered($user));
-
+    
         Auth::login($user);
-
-        return redirect(route('dashboard', absolute: false));
+    
+        return redirect()->route('dashboard');
     }
 }

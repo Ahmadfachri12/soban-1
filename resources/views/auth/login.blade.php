@@ -29,7 +29,7 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div class="mb-4">
-                <label class="block mb-2 text-gray-700" for="email">
+                <label class="block mb-2 text-gray-700" for="username_or_email">
                     <i class="fas fa-user"></i>
                     Username atau Email
                 </label>
@@ -45,16 +45,7 @@
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 <!-- Icon Mata untuk menampilkan password -->
                 <i class="fas fa-eye absolute top-1/2 right-3 transform -translate-y-1/2 cursor-pointer mt-4" id="togglePassword"></i>
-            </div>
-            <div class="mb-4">
-                <p class="text-gray-700 mb-3">Login Sebagai</p>
-                <div class="flex items-center">
-                    <input class="mr-2" id="provider" name="role" type="radio"/>
-                    <label class="mr-4" for="provider">Penyedia Jasa</label>
-                    <input class="mr-2" id="user" name="role" type="radio"/>
-                    <label for="user">Pengguna</label>
-                </div>
-            </div>
+            </div>          
             <div class="flex items-center justify-between mt-4">
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100" href="{{ route('password.request') }}">
@@ -66,6 +57,7 @@
                 </button>
             </div>
         </form>
+        
     </div>
 </main>
   
