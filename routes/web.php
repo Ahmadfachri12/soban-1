@@ -4,8 +4,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\LayananJasaController;
+use App\Http\Controllers\PenyediaJasaController;
 use App\Http\Controllers\Admin\LayananJasaController as AdminLayananJasaController;
 use App\Http\Controllers\Admin\KategoriController as AdminKategoriController;
+use App\Http\Controllers\Admin\PenyediaJasaController as AdminPenyediaJasaController;
 use App\Http\Controllers\PesananController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +23,10 @@ Route::delete('/dashboard/layananjasa/{id}', [AdminLayananJasaController::class,
 Route::get('/dashboard/kategori', [AdminKategoriController::class, 'index'])->name('admin.kategori.index'); 
 Route::get('/dashboard/kategori/create', [AdminKategoriController::class, 'create']);
 Route::post('/dashboard/kategori/store', [AdminKategoriController::class, 'store'])->name('admin.kategori.store');
+
+Route::get('/dashboard/penyediajasa', [AdminPenyediaJasaController::class, 'index'])->name('admin.penyediajasa.index'); 
+Route::get('/dashboard/penyediajasa/create', [AdminPenyediaJasaController::class, 'create']);
+Route::post('/dashboard/penyediajasa/store', [AdminPenyediaJasaController::class, 'store'])->name('admin.penyediajasa.store');
 
 
 Route::get('/', [BerandaController::class, 'index']);

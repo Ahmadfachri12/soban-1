@@ -20,7 +20,7 @@
           </a>
         </li>
         <li>
-          <a href="tables-data.html">
+          <a href="/dashboard/penyediajasa">
             <i class="bi bi-briefcase fs-6"></i><span>Data Penyedia Jasa</span>
           </a>
         </li>
