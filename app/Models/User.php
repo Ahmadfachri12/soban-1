@@ -12,6 +12,16 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+    const ROLE_ADMIN = 'admin';
+    const ROLE_PENYEDIA_JASA = 'penyedia_jasa';
+    const ROLE_PENGGUNA = 'pengguna';
+
+    // Model User
+    public function isAdmin()
+    {
+        return $this->role === self::ROLE_ADMIN;
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -19,11 +29,15 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'alamat',
+        'username',
         'noTelepon',
         'email',
+        'birthdate',
+        'gender',
+        'alamat',
         'password',
-    ];
+        'role',
+    ]; 
 
     // Relasi dengan Pesanan
     public function pesanan()
@@ -52,11 +66,7 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }

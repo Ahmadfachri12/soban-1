@@ -19,6 +19,18 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login');
     }
 
+    // Fungsi untuk redirect berdasarkan role
+    protected function authenticated(Request $request, $user)
+    {
+        // Cek role pengguna dan arahkan ke halaman yang sesuai
+        if ($user->role === 'admin') {
+            return redirect()->route('admin.index'); // Halaman Admin
+        } elseif ($user->role === 'penyedia_jasa') {
+            return redirect()->route('penyedia-jasa.index'); // Halaman Penyedia Jasa
+        } else {
+            return redirect()->route('user.index'); // Halaman Pengguna
+        }
+    }
     /**
      * Handle an incoming authentication request.
      */
@@ -28,7 +40,28 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        // Validasi login
+        $request->validate([
+            'username_or_email' => ['required', 'string'],
+            'password' => ['required', 'string'],
+        ]);
+
+        // Cek apakah username atau email ada di database
+        $credentials = [
+            'email' => $request->username_or_email,
+            'password' => $request->password,
+        ];
+
+        // Jika gagal login, kembali ke halaman login dengan pesan error
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return $this->authenticated($request, Auth::user());
+        }
+
+        // Jika gagal
+        return back()->withErrors([
+            'username_or_email' => 'Username atau email dan password tidak cocok.',
+        ]);
     }
 
     /**
@@ -36,12 +69,12 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        Auth::guard('web')->logout();
+        Auth::logout();
 
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
-
+    
+        // Redirect setelah logout
         return redirect('/');
     }
 }
